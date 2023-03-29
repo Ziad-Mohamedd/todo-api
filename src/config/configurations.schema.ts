@@ -4,4 +4,7 @@ export const configurationsSchemaValidation = Joi.object({
   server: {
     port: Joi.string().required(),
   },
+  database: {
+    databaseURL: Joi.string().required(),
+  },
 });

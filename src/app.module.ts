@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './modules/app/app.controller';
 import { AppService } from './modules/app/app.service';
-import configurations from './modules/config/configurations';
-import { configurationsSchemaValidation } from './modules/config/configurations.schema';
+import configurations from './config/configurations';
+import { configurationsSchemaValidation } from './config/configurations.schema';
+import { PrismaModule } from './modules/prisma/prisma.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { configurationsSchemaValidation } from './modules/config/configurations.
       load: [configurations],
       validationSchema: configurationsSchemaValidation,
     }),
+    PrismaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
