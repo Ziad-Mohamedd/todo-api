@@ -7,4 +7,9 @@ export const configurationsSchemaValidation = Joi.object({
   database: {
     databaseURL: Joi.string().required(),
   },
+  jwt: {
+    secret: Joi.string().required(),
+    expiresIn: Joi.number().required(),
+    salt: Joi.string().required(),
+  },
 });

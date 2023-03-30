@@ -5,6 +5,8 @@ import { AppService } from './modules/app/app.service';
 import configurations from './config/configurations';
 import { configurationsSchemaValidation } from './config/configurations.schema';
 import { PrismaModule } from './modules/prisma/prisma.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { PrismaModule } from './modules/prisma/prisma.module';
       validationSchema: configurationsSchemaValidation,
     }),
     PrismaModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
