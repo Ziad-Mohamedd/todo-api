@@ -12,9 +12,35 @@ datasource db {
 
 model User {
   id       String @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
   email    String @unique
   name     String
   password String
+  Task     Task[]
 
   @@map("users")
+}
+
+model Task {
+  id          String     @id @default(uuid())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  deletedAt   DateTime?
+  
+  title       String
+  description String
+  status      TaskStatus @default(Planned)
+
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String?
+
+  @@map("tasks")
+}
+
+enum TaskStatus {
+  Planned
+  Done
 }
